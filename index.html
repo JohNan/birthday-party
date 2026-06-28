@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elias Minion-Kalas!</title>
-  <meta name="description" content="Du är inbjuden till ett superroligt Minion-kalas idag kl 14:00 på Kvarnbogatan 36!">
+  <title>Alices Katt-Kalas!</title>
+  <meta name="description" content="Du är inbjuden till ett jätteroligt katt-kalas den 23 augusti kl 14:00 på Kvarnbogatan 36!">
   
   <!-- Playful Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,27 +15,43 @@
 </head>
 <body>
   <div class="stars-bg"></div>
-  <div class="banana-rain" id="bananaRainContainer"></div>
+  <div class="cat-rain" id="catRainContainer"></div>
 
   <main class="invitation-container">
-    <!-- Minion Head & Interactive Eye -->
-    <header class="minion-header">
-      <div class="minion-goggle-strap"></div>
-      <div class="minion-goggle">
-        <div class="minion-eye" id="minionEye">
-          <div class="minion-pupil"></div>
+    <!-- Interactive CSS Cat Header -->
+    <header class="cat-header">
+      <div class="cat-ear ear-left"></div>
+      <div class="cat-ear ear-right"></div>
+      
+      <div class="cat-eyes-container">
+        <div class="cat-eye-wrapper">
+          <div class="cat-eye eye-left" id="eyeLeft">
+            <div class="cat-pupil"></div>
+          </div>
+        </div>
+        <div class="cat-eye-wrapper">
+          <div class="cat-eye eye-right" id="eyeRight">
+            <div class="cat-pupil"></div>
+          </div>
         </div>
       </div>
-      <div class="hair-strand hair-1"></div>
-      <div class="hair-strand hair-2"></div>
-      <div class="hair-strand hair-3"></div>
+      
+      <div class="cat-nose"></div>
+      <div class="cat-mouth"></div>
+      
+      <div class="cat-whiskers whiskers-left">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="cat-whiskers whiskers-right">
+        <span></span><span></span><span></span>
+      </div>
     </header>
 
     <!-- Invitation Card Body -->
     <section class="card-body">
-      <div class="party-badge">Bello! Du är bjuden!</div>
-      <h1 class="main-title">Elias 7-Års Kalas!</h1>
-      <p class="subtitle">Häng med på ett hejdundrande Minion-äventyr!</p>
+      <div class="party-badge">Mjau! Du är bjuden!</div>
+      <h1 class="main-title">Alices 10-Års Katt-Kalas!</h1>
+      <p class="subtitle">Välkommen på ett mysigt kalas med katt-tema!</p>
 
       <!-- Time and Location Info Cards -->
       <div class="details-grid">
@@ -45,7 +61,7 @@
           </div>
           <div class="detail-info">
             <h3>När?</h3>
-            <p class="highlight-text">Idag (Söndag)</p>
+            <p class="highlight-text">Söndag 23 Augusti</p>
             <p>Kl. 14:00 - 16:00</p>
           </div>
         </div>
@@ -63,20 +79,25 @@
 
         <div class="detail-card water-card">
           <div class="icon-wrapper">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-droplet"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smile"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
           </div>
           <div class="detail-info">
-            <h3>Viktigt!</h3>
-            <p class="highlight-text">Ta med badkläder & handduk! 💦</p>
-            <p>Vi kommer att svalka oss med vattenspridare och en rolig vattenglidbana i trädgården!</p>
+            <h3>Katt-skoj! 🎨</h3>
+            <p class="highlight-text">Ansiktsmålning & lekar!</p>
+            <p>Vi blir sminkade till söta kattungar och leker roliga lekar i trädgården!</p>
           </div>
         </div>
       </div>
 
       <!-- Live Countdown -->
       <div class="countdown-section">
-        <h2 class="section-title">Kalasen börjar om...</h2>
+        <h2 class="section-title">Katt-äventyret börjar om...</h2>
         <div class="countdown-timer" id="countdownTimer">
+          <div class="time-block">
+            <span class="number" id="days">00</span>
+            <span class="label">Dagar</span>
+          </div>
+          <div class="time-separator">:</div>
           <div class="time-block">
             <span class="number" id="hours">00</span>
             <span class="label">Timmar</span>
@@ -107,19 +128,18 @@
               </div>
             </div>
             <div class="weather-temp">
-              <span class="temp-num">31</span><span class="temp-unit">°C</span>
+              <span class="temp-num">21</span><span class="temp-unit">°C</span>
             </div>
           </div>
           <div class="weather-details">
-            <p><strong>Prognos:</strong> Strålande sol & nästan molnfritt i Uppsala!</p>
+            <p><strong>Prognos:</strong> Typiskt behagligt sensommarväder i Uppsala! (Historiskt medeltal)</p>
             <div class="weather-stats">
               <span class="stat">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><path d="M23 12a11.004 11.004 0 0 0-21-3.6A11.004 11.004 0 0 0 12 23a11 11 0 0 0 11-11z"></path><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path></svg>
-                Regnrisk: 30%
+                Normal solchans
               </span>
               <span class="stat">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
-                Vind: 3 m/s (SSW)
+                Live-data laddas 1 vecka innan
               </span>
             </div>
           </div>
@@ -128,41 +148,40 @@
 
       <!-- RSVP Section -->
       <div class="rsvp-section" id="rsvpSection">
-        <h2 class="section-title">OSA (Svara senast nu!)</h2>
-        <p class="rsvp-description">Kan du komma och fira med oss? Fyll i formuläret nedan för att anmäla dig till kalaset!</p>
+        <h2 class="section-title">OSA (Svara senast 16:e augusti)</h2>
+        <p class="rsvp-description">Vill du komma på mitt katt-kalas? Anmäl dig nedan så jag vet hur många katt-godisar jag ska ordna!</p>
         
         <form class="rsvp-form" id="rsvpForm">
           <div class="input-group">
             <label for="guestName">Ditt Namn</label>
-            <input type="text" id="guestName" required placeholder="T.ex. Kevin">
+            <input type="text" id="guestName" required placeholder="T.ex. Maja">
           </div>
           
           <div class="input-group">
-            <label for="guestCount">Hur många Minioner kommer?</label>
+            <label for="guestCount">Hur många kattungar kommer?</label>
             <select id="guestCount" required>
-              <option value="1">1 Minion</option>
-              <option value="2">2 Minioner</option>
-              <option value="3">3 Minioner</option>
-              <option value="4">4 Minioner</option>
-              <option value="5">Fler (skriv i info)</option>
+              <option value="1">1 Kattunge</option>
+              <option value="2">2 Kattungar</option>
+              <option value="3">3 Kattungar</option>
+              <option value="4">4 Kattungar</option>
             </select>
           </div>
 
           <div class="input-group">
-            <label for="guestNotes">Allergier eller annat skoj?</label>
-            <textarea id="guestNotes" rows="2" placeholder="T.ex. Tål ej bananer (skämt åsido!) eller laktosfri glass..."></textarea>
+            <label for="guestNotes">Kattallergier eller kostönskemål?</label>
+            <textarea id="guestNotes" rows="2" placeholder="T.ex. Laktosfri tårta, nötallergiker eller favorit-kattras..."></textarea>
           </div>
 
           <button type="submit" class="submit-btn" id="submitBtn">
-            <span>Poopaye! (Skicka anmälan)</span>
+            <span>Mjau! Skicka anmälan 🐾</span>
             <div class="btn-bubble"></div>
           </button>
         </form>
         
         <div class="success-message" id="successMessage" style="display: none;">
-          <div class="success-icon">🎉</div>
-          <h3>Hurra! Anmälan skickad!</h3>
-          <p>Vi ses idag kl. 14:00! Ta med ditt bästa banan-humör!</p>
+          <div class="success-icon">🐱</div>
+          <h3>Mjau! Anmälan skickad!</h3>
+          <p>Tack! Vi ses söndagen den 23 augusti kl. 14:00!</p>
           <div class="rsvp-summary" id="rsvpSummary"></div>
           <button type="button" class="reset-btn" id="resetBtn">Ändra anmälan</button>
         </div>
@@ -192,18 +211,10 @@
       </div>
     </section>
 
-    <!-- Minion Denim Bottom (Footer style overalls) -->
-    <footer class="minion-footer-denim">
-      <div class="overalls-pocket">
-        <div class="pocket-logo">G</div>
-      </div>
-      <div class="overalls-strap strap-left">
-        <div class="button"></div>
-      </div>
-      <div class="overalls-strap strap-right">
-        <div class="button"></div>
-      </div>
-      <p class="footer-tagline">Bello! BANANA! 🍌</p>
+    <!-- Cat Tail Footer (Cozy Yarn styling) -->
+    <footer class="cat-footer-yarn">
+      <div class="cat-tail" id="catTail"></div>
+      <p class="footer-tagline">Mjau! Välkommen! 🐾</p>
     </footer>
   </main>
 
