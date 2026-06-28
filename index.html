@@ -3,219 +3,219 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alices Katt-Kalas!</title>
-  <meta name="description" content="Du är inbjuden till ett jätteroligt katt-kalas den 23 augusti kl 14:00 på Kvarnbogatan 36!">
+  <title>Alices 10-Års Fest — 23 Augusti 2026</title>
+  <meta name="description" content="Du är hjärtligt välkommen till Alices katt-inspirerade 10-årsfest den 23 augusti kl 14:00 på Kvarnbogatan 36 i Uppsala.">
   
-  <!-- Playful Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="stars-bg"></div>
-  <div class="cat-rain" id="catRainContainer"></div>
+  <!-- Floating petals -->
+  <div class="petals-container" id="petalsContainer"></div>
 
-  <main class="invitation-container">
-    <!-- Interactive CSS Cat Header -->
-    <header class="cat-header">
-      <div class="cat-ear ear-left"></div>
-      <div class="cat-ear ear-right"></div>
-      
-      <div class="cat-eyes-container">
-        <div class="cat-eye-wrapper">
-          <div class="cat-eye eye-left" id="eyeLeft">
-            <div class="cat-pupil"></div>
-          </div>
-        </div>
-        <div class="cat-eye-wrapper">
-          <div class="cat-eye eye-right" id="eyeRight">
-            <div class="cat-pupil"></div>
-          </div>
-        </div>
+  <main class="page-wrapper">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-image-wrap">
+        <img src="hero.jpg" alt="En söt katt omgiven av blommor" class="hero-img">
+        <div class="hero-overlay"></div>
       </div>
-      
-      <div class="cat-nose"></div>
-      <div class="cat-mouth"></div>
-      
-      <div class="cat-whiskers whiskers-left">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="cat-whiskers whiskers-right">
-        <span></span><span></span><span></span>
-      </div>
-    </header>
-
-    <!-- Invitation Card Body -->
-    <section class="card-body">
-      <div class="party-badge">Mjau! Du är bjuden!</div>
-      <h1 class="main-title">Alices 10-Års Katt-Kalas!</h1>
-      <p class="subtitle">Välkommen på ett mysigt kalas med katt-tema!</p>
-
-      <!-- Time and Location Info Cards -->
-      <div class="details-grid">
-        <div class="detail-card">
-          <div class="icon-wrapper">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          </div>
-          <div class="detail-info">
-            <h3>När?</h3>
-            <p class="highlight-text">Söndag 23 Augusti</p>
-            <p>Kl. 14:00 - 16:00</p>
-          </div>
-        </div>
-
-        <div class="detail-card">
-          <div class="icon-wrapper">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          </div>
-          <div class="detail-info">
-            <h3>Var?</h3>
-            <p class="highlight-text">Kvarnbogatan 36</p>
-            <p>Kungsgärdet, Uppsala</p>
-          </div>
-        </div>
-
-        <div class="detail-card activity-card">
-          <div class="icon-wrapper">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smile"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
-          </div>
-          <div class="detail-info">
-            <h3>Katt-skoj! 🎨</h3>
-            <p class="highlight-text">Ansiktsmålning & lekar!</p>
-            <p>Vi blir sminkade till söta kattungar och leker roliga lekar i trädgården!</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Live Countdown -->
-      <div class="countdown-section">
-        <h2 class="section-title">Katt-äventyret börjar om...</h2>
-        <div class="countdown-timer" id="countdownTimer">
-          <div class="time-block">
-            <span class="number" id="days">00</span>
-            <span class="label">Dagar</span>
-          </div>
-          <div class="time-separator">:</div>
-          <div class="time-block">
-            <span class="number" id="hours">00</span>
-            <span class="label">Timmar</span>
-          </div>
-          <div class="time-separator">:</div>
-          <div class="time-block">
-            <span class="number" id="minutes">00</span>
-            <span class="label">Minuter</span>
-          </div>
-          <div class="time-separator">:</div>
-          <div class="time-block">
-            <span class="number" id="seconds">00</span>
-            <span class="label">Sekunder</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Weather Prognosis -->
-      <div class="weather-section">
-        <h2 class="section-title">Väderrapport ☀️</h2>
-        <div class="weather-card">
-          <div class="weather-main">
-            <div class="weather-icon-sun">
-              <div class="sun-ray-core"></div>
-              <div class="sun-rays">
-                <span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span>
-              </div>
-            </div>
-            <div class="weather-temp">
-              <span class="temp-num">21</span><span class="temp-unit">°C</span>
-            </div>
-          </div>
-          <div class="weather-details">
-            <p><strong>Prognos:</strong> Typiskt behagligt sensommarväder i Uppsala! (Historiskt medeltal)</p>
-            <div class="weather-stats">
-              <span class="stat">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><path d="M23 12a11.004 11.004 0 0 0-21-3.6A11.004 11.004 0 0 0 12 23a11 11 0 0 0 11-11z"></path><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path></svg>
-                Normal solchans
-              </span>
-              <span class="stat">
-                Live-data laddas 1 vecka innan
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- RSVP Section -->
-      <div class="rsvp-section" id="rsvpSection">
-        <h2 class="section-title">OSA (Svara senast 16:e augusti)</h2>
-        <p class="rsvp-description">Vill du komma på mitt katt-kalas? Anmäl dig nedan så jag vet hur många katt-godisar jag ska ordna!</p>
-        
-        <form class="rsvp-form" id="rsvpForm">
-          <div class="input-group">
-            <label for="guestName">Ditt Namn</label>
-            <input type="text" id="guestName" required placeholder="T.ex. Maja">
-          </div>
-          
-          <div class="input-group">
-            <label for="guestCount">Hur många kattungar kommer?</label>
-            <select id="guestCount" required>
-              <option value="1">1 Kattunge</option>
-              <option value="2">2 Kattungar</option>
-              <option value="3">3 Kattungar</option>
-              <option value="4">4 Kattungar</option>
-            </select>
-          </div>
-
-          <div class="input-group">
-            <label for="guestNotes">Kattallergier eller kostönskemål?</label>
-            <textarea id="guestNotes" rows="2" placeholder="T.ex. Laktosfri tårta, nötallergiker eller favorit-kattras..."></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn" id="submitBtn">
-            <span>Mjau! Skicka anmälan 🐾</span>
-            <div class="btn-bubble"></div>
-          </button>
-        </form>
-        
-        <div class="success-message" id="successMessage" style="display: none;">
-          <div class="success-icon">🐱</div>
-          <h3>Mjau! Anmälan skickad!</h3>
-          <p>Tack! Vi ses söndagen den 23 augusti kl. 14:00!</p>
-          <div class="rsvp-summary" id="rsvpSummary"></div>
-          <button type="button" class="reset-btn" id="resetBtn">Ändra anmälan</button>
-        </div>
-      </div>
-
-      <!-- Location / Map -->
-      <div class="location-section">
-        <h2 class="section-title">Hitta Hit</h2>
-        <div class="map-card">
-          <div class="mock-map">
-            <div class="map-grid"></div>
-            <div class="map-route"></div>
-            <div class="map-pin">
-              <div class="pin-pulse"></div>
-              <div class="pin-icon">📍</div>
-            </div>
-            <div class="map-label">Kvarnbogatan 36</div>
-          </div>
-          <div class="location-details">
-            <p><strong>Adress:</strong> Kvarnbogatan 36, Uppsala (Kungsgärdet)</p>
-            <p class="small-text">Parkering finns på gatan. Cykelbana löper precis förbi huset!</p>
-            <a href="https://maps.google.com/?q=Kvarnbogatan+36,+Uppsala" target="_blank" rel="noopener noreferrer" class="map-link">
-              Öppna i Google Maps ↗
-            </a>
-          </div>
-        </div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">En inbjudan till</p>
+        <h1 class="hero-title">Alices <em>Katt</em>fest</h1>
+        <p class="hero-subtitle">10 år — 23 Augusti 2026</p>
+        <a href="#rsvp" class="hero-cta">OSA här &darr;</a>
       </div>
     </section>
 
-    <!-- Cat Tail Footer (Cozy Yarn styling) -->
-    <footer class="cat-footer-yarn">
-      <div class="cat-tail" id="catTail"></div>
-      <p class="footer-tagline">Mjau! Välkommen! 🐾</p>
+    <!-- Invitation Body -->
+    <article class="invitation-body">
+
+      <!-- Intro Text -->
+      <section class="intro-section">
+        <div class="divider"><span>✦</span></div>
+        <p class="intro-text">
+          Välkommen på en varm sensommareftermiddag fylld av mjukhet,<br>
+          kattlek och vänskap — Alice fyller jättestora tio år!
+        </p>
+        <div class="divider"><span>✦</span></div>
+      </section>
+
+      <!-- Details Grid -->
+      <section class="details-section">
+        <div class="detail-item">
+          <div class="detail-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <div class="detail-text">
+            <h3>Datum</h3>
+            <p>Söndag, 23 Augusti 2026</p>
+            <p class="detail-sub">Kl. 14:00 — 16:00</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <div class="detail-text">
+            <h3>Plats</h3>
+            <p>Kvarnbogatan 36</p>
+            <p class="detail-sub">Kungsgärdet, Uppsala</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="detail-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <div class="detail-text">
+            <h3>Aktiviteter</h3>
+            <p>Ansiktsmålning & lek</p>
+            <p class="detail-sub">Vi blir söta kattungar!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Countdown -->
+      <section class="countdown-section">
+        <h2 class="section-heading">Kalaset börjar om</h2>
+        <div class="countdown-grid" id="countdownTimer">
+          <div class="countdown-block">
+            <span class="count-num" id="days">00</span>
+            <span class="count-label">dagar</span>
+          </div>
+          <span class="count-sep">·</span>
+          <div class="countdown-block">
+            <span class="count-num" id="hours">00</span>
+            <span class="count-label">timmar</span>
+          </div>
+          <span class="count-sep">·</span>
+          <div class="countdown-block">
+            <span class="count-num" id="minutes">00</span>
+            <span class="count-label">minuter</span>
+          </div>
+          <span class="count-sep">·</span>
+          <div class="countdown-block">
+            <span class="count-num" id="seconds">00</span>
+            <span class="count-label">sekunder</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Weather -->
+      <section class="weather-section">
+        <h2 class="section-heading">Väderprognos</h2>
+        <div class="weather-card">
+          <div class="weather-left">
+            <div class="weather-sun">
+              <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" class="sun-svg">
+                <circle cx="40" cy="40" r="18" fill="#c9a96e" opacity="0.9"/>
+                <g stroke="#c9a96e" stroke-width="3" stroke-linecap="round" opacity="0.6" class="sun-rays-svg">
+                  <line x1="40" y1="6"  x2="40" y2="14"/>
+                  <line x1="40" y1="66" x2="40" y2="74"/>
+                  <line x1="6"  y1="40" x2="14" y2="40"/>
+                  <line x1="66" y1="40" x2="74" y2="40"/>
+                  <line x1="16" y1="16" x2="22" y2="22"/>
+                  <line x1="58" y1="58" x2="64" y2="64"/>
+                  <line x1="64" y1="16" x2="58" y2="22"/>
+                  <line x1="22" y1="58" x2="16" y2="64"/>
+                </g>
+              </svg>
+            </div>
+            <div class="weather-temp-wrap">
+              <span class="temp">21</span>
+              <span class="temp-deg">°C</span>
+            </div>
+          </div>
+          <div class="weather-right">
+            <p class="weather-desc">Historiskt sensommarväder i Uppsala — behagliga temperaturer, delvis soligt med lätt vind.</p>
+            <div class="weather-pills">
+              <span class="pill">☁️ Delvis molnigt</span>
+              <span class="pill">💨 Svag vind</span>
+              <span class="pill">🌡 Historiskt snitt</span>
+            </div>
+            <p class="weather-note">Live-prognos visas en vecka innan kalaset.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RSVP Section -->
+      <section class="rsvp-section" id="rsvp">
+        <h2 class="section-heading">Anmäl dig</h2>
+        <p class="rsvp-lead">Svara gärna senast <strong>16 Augusti</strong> — vi vill veta hur många kattungar som kommer!</p>
+
+        <form class="rsvp-form" id="rsvpForm">
+          <div class="field-row two-col">
+            <div class="field-group">
+              <label for="guestName">Ditt namn</label>
+              <input type="text" id="guestName" required placeholder="T.ex. Maja Lindström">
+            </div>
+            <div class="field-group">
+              <label for="guestCount">Antal gäster</label>
+              <select id="guestCount" required>
+                <option value="1">1 person</option>
+                <option value="2">2 personer</option>
+                <option value="3">3 personer</option>
+                <option value="4">4 personer</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="guestNotes">Allergier eller övriga önskemål</label>
+            <textarea id="guestNotes" rows="3" placeholder="Laktosfri, nötallergi, vegetarisk — eller ett glatt meddelande till Alice!"></textarea>
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">Skicka anmälan</button>
+        </form>
+
+        <div class="success-message" id="successMessage" style="display:none">
+          <div class="success-paw">🐾</div>
+          <h3>Tack för din anmälan!</h3>
+          <p>Vi ses söndagen den 23 Augusti kl. 14:00 på Kvarnbogatan 36!</p>
+          <div class="rsvp-summary" id="rsvpSummary"></div>
+          <button type="button" class="text-btn" id="resetBtn">Ändra anmälan</button>
+        </div>
+      </section>
+
+      <!-- Location -->
+      <section class="location-section">
+        <h2 class="section-heading">Hitta hit</h2>
+        <div class="location-card">
+          <div class="map-area">
+            <div class="map-bg"></div>
+            <div class="map-grid-lines"></div>
+            <div class="map-roads">
+              <div class="road road-h"></div>
+              <div class="road road-v"></div>
+            </div>
+            <div class="map-marker-wrap">
+              <div class="map-marker-shadow"></div>
+              <div class="map-marker">📍</div>
+              <div class="map-tooltip">Kvarnbogatan 36</div>
+            </div>
+          </div>
+          <div class="location-info">
+            <p><strong>Kvarnbogatan 36</strong></p>
+            <p class="location-sub">Kungsgärdet, Uppsala</p>
+            <p class="location-note">Parkering längs gatan. Cykelbana precis utanför.</p>
+            <a href="https://maps.google.com/?q=Kvarnbogatan+36,+Uppsala" target="_blank" rel="noopener noreferrer" class="map-link">Öppna i Google Maps →</a>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-ornament">✦ &nbsp; 🐾 &nbsp; ✦</div>
+      <p>Alice & familjen — Kvarnbogatan 36, Uppsala</p>
+      <p class="footer-note">23 Augusti 2026 · Kl. 14:00–16:00</p>
     </footer>
+
   </main>
 
   <script src="script.js"></script>
