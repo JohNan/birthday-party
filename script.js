@@ -1,220 +1,146 @@
 document.addEventListener('DOMContentLoaded', () => {
-  initCatEyes();
-  initCatRain();
+  initPetals();
   initCountdown();
   initRSVP();
 });
 
 /**
- * 1. Cat Eyes Tracking Movement
+ * 1. Subtle floating petal / confetti effect
  */
-function initCatEyes() {
-  const eyeLeft = document.getElementById('eyeLeft');
-  const eyeRight = document.getElementById('eyeRight');
-  
-  if (!eyeLeft || !eyeRight) return;
-
-  const eyes = [eyeLeft, eyeRight];
-
-  document.addEventListener('mousemove', (e) => {
-    eyes.forEach((eye) => {
-      const pupil = eye.querySelector('.cat-pupil');
-      if (!pupil) return;
-
-      const eyeRect = eye.getBoundingClientRect();
-      const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-      const eyeCenterY = eyeRect.top + eyeRect.height / 2;
-      
-      const deltaX = e.clientX - eyeCenterX;
-      const deltaY = e.clientY - eyeCenterY;
-      
-      // Calculate angle and limit the distance the pupil can move (max 10px for cat slot)
-      const angle = Math.atan2(deltaY, deltaX);
-      const maxDistance = 10;
-      const distance = Math.min(maxDistance, Math.hypot(deltaX, deltaY) / 12);
-      
-      const moveX = Math.cos(angle) * distance;
-      const moveY = Math.sin(angle) * distance;
-      
-      pupil.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    });
-  });
-}
-
-/**
- * 2. Falling Cat Rain Backdrop Effect
- */
-function initCatRain() {
-  const container = document.getElementById('catRainContainer');
+function initPetals() {
+  const container = document.getElementById('petalsContainer');
   if (!container) return;
 
-  const elements = ['🐾', '🐾', '🐱', '🐟', '🧶', '💖', '✨'];
-  const maxElements = 15;
+  const symbols = ['🌸', '🌿', '✦', '🤍', '🌺', '✿'];
+  const count = 12;
 
-  for (let i = 0; i < maxElements; i++) {
-    createFallingElement(container, elements);
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    el.className = 'petal';
+    el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+
+    el.style.left            = `${Math.random() * 100}vw`;
+    el.style.fontSize        = `${10 + Math.random() * 14}px`;
+    el.style.animationDelay    = `${Math.random() * 15}s`;
+    el.style.animationDuration = `${14 + Math.random() * 16}s`;
+
+    container.appendChild(el);
+
+    el.addEventListener('animationiteration', () => {
+      el.style.left = `${Math.random() * 100}vw`;
+    });
   }
 }
 
-function createFallingElement(container, elements) {
-  const el = document.createElement('div');
-  el.className = 'cat-emoji';
-  el.innerText = elements[Math.floor(Math.random() * elements.length)];
-  
-  // Random horizontal position
-  el.style.left = `${Math.random() * 100}vw`;
-  
-  // Random delay and duration
-  const delay = Math.random() * 10;
-  const duration = 8 + Math.random() * 12;
-  el.style.animationDelay = `${delay}s`;
-  el.style.animationDuration = `${duration}s`;
-  
-  // Random sizing
-  const scale = 0.5 + Math.random() * 0.8;
-  el.style.transform = `scale(${scale})`;
-  
-  container.appendChild(el);
-
-  // Recycle elements by moving them back to top and randomizing left
-  el.addEventListener('animationiteration', () => {
-    el.style.left = `${Math.random() * 100}vw`;
-  });
-}
-
 /**
- * 3. Countdown Timer Logic
- * Target is August 23, 2026, at 14:00.
+ * 2. Countdown — targeting 2026-08-23 at 14:00
  */
 function initCountdown() {
-  const daysEl = document.getElementById('days');
-  const hoursEl = document.getElementById('hours');
-  const minutesEl = document.getElementById('minutes');
-  const secondsEl = document.getElementById('seconds');
-  const timerTitle = document.querySelector('.countdown-section .section-title');
-  const timerContainer = document.getElementById('countdownTimer');
+  const daysEl      = document.getElementById('days');
+  const hoursEl     = document.getElementById('hours');
+  const minutesEl   = document.getElementById('minutes');
+  const secondsEl   = document.getElementById('seconds');
+  const timerEl     = document.getElementById('countdownTimer');
+  const heading     = document.querySelector('.countdown-section .section-heading');
 
   if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
-  // Target: 2026-08-23 14:00:00 (Note: Month 7 is August in JavaScript Date)
-  const targetDate = new Date(2026, 7, 23, 14, 0, 0);
-  const endDate = new Date(2026, 7, 23, 16, 0, 0);
+  const target = new Date(2026, 7, 23, 14, 0, 0); // August = month 7
+  const end    = new Date(2026, 7, 23, 16, 0, 0);
 
-  function updateTimer() {
-    const currentTime = new Date();
-    const timeRemaining = targetDate - currentTime;
-    const timeRemainingEnd = endDate - currentTime;
+  function tick() {
+    const now       = new Date();
+    const remaining = target - now;
+    const tillEnd   = end - now;
 
-    if (timeRemaining > 0) {
-      // Party is in the future
-      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+    if (remaining > 0) {
+      const d = Math.floor(remaining / 864e5);
+      const h = Math.floor((remaining % 864e5) / 36e5);
+      const m = Math.floor((remaining % 36e5)  / 6e4);
+      const s = Math.floor((remaining % 6e4)   / 1e3);
 
-      daysEl.innerText = String(days).padStart(2, '0');
-      hoursEl.innerText = String(hours).padStart(2, '0');
-      minutesEl.innerText = String(minutes).padStart(2, '0');
-      secondsEl.innerText = String(seconds).padStart(2, '0');
-    } else if (timeRemainingEnd > 0) {
-      // Party is happening right now
-      if (timerTitle) timerTitle.innerHTML = '🎈 Kalaset är igång just nu! 🐾';
-      timerContainer.innerHTML = `
-        <div style="font-size: 20px; font-weight: 700; color: #fecdd3; padding: 10px; text-align: center; width: 100%;">
-          Kom in och mys! Kalaset slutar kl 16:00.
-        </div>
-      `;
-      clearInterval(timerInterval);
+      daysEl.textContent    = String(d).padStart(2, '0');
+      hoursEl.textContent   = String(h).padStart(2, '0');
+      minutesEl.textContent = String(m).padStart(2, '0');
+      secondsEl.textContent = String(s).padStart(2, '0');
+
+    } else if (tillEnd > 0) {
+      if (heading) heading.textContent = 'Kalaset pågår just nu!';
+      if (timerEl) timerEl.innerHTML = `
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#c9748a;text-align:center;padding:20px 0;">
+          Välkommen in — festen är igång fram till kl 16:00 🐾
+        </p>`;
+      clearInterval(interval);
+
     } else {
-      // Party has ended
-      if (timerTitle) timerTitle.innerHTML = '👋 Kalaset har slutat';
-      timerContainer.innerHTML = `
-        <div style="font-size: 16px; font-weight: 500; color: #a1a1aa; padding: 10px; text-align: center; width: 100%;">
-          Tack för att du kom och firade med oss! Mjau!
-        </div>
-      `;
-      clearInterval(timerInterval);
+      if (heading) heading.textContent = 'Kalaset är avslutat';
+      if (timerEl) timerEl.innerHTML = `
+        <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#a89590;text-align:center;padding:20px 0;">
+          Tack alla för en underbar dag! 🌸
+        </p>`;
+      clearInterval(interval);
     }
   }
 
-  // Initial call and set interval
-  updateTimer();
-  const timerInterval = setInterval(updateTimer, 1000);
+  tick();
+  const interval = setInterval(tick, 1000);
 }
 
 /**
- * 4. RSVP Handling & LocalStorage Persistence
+ * 3. RSVP — localStorage persistence
  */
 function initRSVP() {
-  const rsvpForm = document.getElementById('rsvpForm');
-  const successMessage = document.getElementById('successMessage');
-  const rsvpSummary = document.getElementById('rsvpSummary');
-  const resetBtn = document.getElementById('resetBtn');
+  const form    = document.getElementById('rsvpForm');
+  const success = document.getElementById('successMessage');
+  const summary = document.getElementById('rsvpSummary');
+  const reset   = document.getElementById('resetBtn');
 
-  if (!rsvpForm || !successMessage || !rsvpSummary || !resetBtn) return;
+  if (!form || !success || !summary || !reset) return;
 
-  const storageKey = 'cat_party_rsvp';
+  const KEY = 'alice_cat_party_2026';
 
-  // Load existing RSVP
-  const savedData = localStorage.getItem(storageKey);
-  if (savedData) {
-    try {
-      const data = JSON.parse(savedData);
-      showSuccess(data);
-    } catch (e) {
-      localStorage.removeItem(storageKey);
-    }
+  const saved = localStorage.getItem(KEY);
+  if (saved) {
+    try { showSuccess(JSON.parse(saved)); }
+    catch { localStorage.removeItem(KEY); }
   }
 
-  // Handle Form Submit
-  rsvpForm.addEventListener('submit', (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    const name = document.getElementById('guestName').value.trim();
-    const count = document.getElementById('guestCount').value;
-    const notes = document.getElementById('guestNotes').value.trim();
-
-    if (!name) return;
-
-    const rsvpData = {
-      name,
-      count,
-      notes: notes || 'Inga allergier eller särskilda önskemål.'
+    const data = {
+      name:  document.getElementById('guestName').value.trim(),
+      count: document.getElementById('guestCount').value,
+      notes: document.getElementById('guestNotes').value.trim()
+        || 'Inga specifika önskemål.'
     };
-
-    // Save to localStorage
-    localStorage.setItem(storageKey, JSON.stringify(rsvpData));
-
-    // Show success view
-    showSuccess(rsvpData);
+    if (!data.name) return;
+    localStorage.setItem(KEY, JSON.stringify(data));
+    showSuccess(data);
   });
 
-  // Handle Reset RSVP
-  resetBtn.addEventListener('click', () => {
-    localStorage.removeItem(storageKey);
-    successMessage.style.display = 'none';
-    rsvpForm.style.display = 'flex';
-    rsvpForm.reset();
+  reset.addEventListener('click', () => {
+    localStorage.removeItem(KEY);
+    success.style.display = 'none';
+    form.style.display    = 'flex';
+    form.reset();
   });
 
   function showSuccess(data) {
-    rsvpForm.style.display = 'none';
-    successMessage.style.display = 'block';
-    
-    rsvpSummary.innerHTML = `
-      <p><strong>Anmäld gäst:</strong> ${escapeHTML(data.name)}</p>
-      <p><strong>Antal kattungar:</strong> ${data.count}</p>
-      <p><strong>Info/Allergier:</strong> ${escapeHTML(data.notes)}</p>
+    form.style.display    = 'none';
+    success.style.display = 'block';
+    summary.innerHTML = `
+      <p><strong>Namn:</strong> ${esc(data.name)}</p>
+      <p><strong>Antal:</strong> ${data.count} person${data.count > 1 ? 'er' : ''}</p>
+      <p><strong>Övrigt:</strong> ${esc(data.notes)}</p>
     `;
   }
 }
 
-// Simple HTML escaping helper for safety
-function escapeHTML(str) {
+function esc(str) {
   return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
+    .replace(/&/g,  '&amp;')
+    .replace(/</g,  '&lt;')
+    .replace(/>/g,  '&gt;')
+    .replace(/"/g,  '&quot;')
+    .replace(/'/g,  '&#039;');
 }
