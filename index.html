@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bobs Minion-Kalas!</title>
+  <meta name="description" content="Du är inbjuden till ett superroligt Minion-kalas idag kl 14:00 på Kvarnbogatan 36!">
+  
+  <!-- Playful Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="stars-bg"></div>
+  <div class="banana-rain" id="bananaRainContainer"></div>
+
+  <main class="invitation-container">
+    <!-- Minion Head & Interactive Eye -->
+    <header class="minion-header">
+      <div class="minion-goggle-strap"></div>
+      <div class="minion-goggle">
+        <div class="minion-eye" id="minionEye">
+          <div class="minion-pupil"></div>
+        </div>
+      </div>
+      <div class="hair-strand hair-1"></div>
+      <div class="hair-strand hair-2"></div>
+      <div class="hair-strand hair-3"></div>
+    </header>
+
+    <!-- Invitation Card Body -->
+    <section class="card-body">
+      <div class="party-badge">Bello! Du är bjuden!</div>
+      <h1 class="main-title">Bobs 7-Års Kalas!</h1>
+      <p class="subtitle">Häng med på ett hejdundrande Minion-äventyr!</p>
+
+      <!-- Time and Location Info Cards -->
+      <div class="details-grid">
+        <div class="detail-card">
+          <div class="icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <div class="detail-info">
+            <h3>När?</h3>
+            <p class="highlight-text">Idag (Söndag)</p>
+            <p>Kl. 14:00 - 16:00</p>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <div class="detail-info">
+            <h3>Var?</h3>
+            <p class="highlight-text">Kvarnbogatan 36</p>
+            <p>Kungsgärdet, Uppsala</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Countdown -->
+      <div class="countdown-section">
+        <h2 class="section-title">Kalasen börjar om...</h2>
+        <div class="countdown-timer" id="countdownTimer">
+          <div class="time-block">
+            <span class="number" id="hours">00</span>
+            <span class="label">Timmar</span>
+          </div>
+          <div class="time-separator">:</div>
+          <div class="time-block">
+            <span class="number" id="minutes">00</span>
+            <span class="label">Minuter</span>
+          </div>
+          <div class="time-separator">:</div>
+          <div class="time-block">
+            <span class="number" id="seconds">00</span>
+            <span class="label">Sekunder</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weather Prognosis -->
+      <div class="weather-section">
+        <h2 class="section-title">Väderrapport ☀️</h2>
+        <div class="weather-card">
+          <div class="weather-main">
+            <div class="weather-icon-sun">
+              <div class="sun-ray-core"></div>
+              <div class="sun-rays">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="weather-temp">
+              <span class="temp-num">31</span><span class="temp-unit">°C</span>
+            </div>
+          </div>
+          <div class="weather-details">
+            <p><strong>Prognos:</strong> Strålande sol & nästan molnfritt i Uppsala!</p>
+            <div class="weather-stats">
+              <span class="stat">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><path d="M23 12a11.004 11.004 0 0 0-21-3.6A11.004 11.004 0 0 0 12 23a11 11 0 0 0 11-11z"></path><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path></svg>
+                Regnrisk: 30%
+              </span>
+              <span class="stat">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>
+                Vind: 3 m/s (SSW)
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RSVP Section -->
+      <div class="rsvp-section" id="rsvpSection">
+        <h2 class="section-title">OSA (Svara senast nu!)</h2>
+        <p class="rsvp-description">Kan du komma och fira med oss? Fyll i formuläret nedan för att anmäla dig till kalaset!</p>
+        
+        <form class="rsvp-form" id="rsvpForm">
+          <div class="input-group">
+            <label for="guestName">Ditt Namn</label>
+            <input type="text" id="guestName" required placeholder="T.ex. Kevin">
+          </div>
+          
+          <div class="input-group">
+            <label for="guestCount">Hur många Minioner kommer?</label>
+            <select id="guestCount" required>
+              <option value="1">1 Minion</option>
+              <option value="2">2 Minioner</option>
+              <option value="3">3 Minioner</option>
+              <option value="4">4 Minioner</option>
+              <option value="5">Fler (skriv i info)</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="guestNotes">Allergier eller annat skoj?</label>
+            <textarea id="guestNotes" rows="2" placeholder="T.ex. Tål ej bananer (skämt åsido!) eller laktosfri glass..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span>Poopaye! (Skicka anmälan)</span>
+            <div class="btn-bubble"></div>
+          </button>
+        </form>
+        
+        <div class="success-message" id="successMessage" style="display: none;">
+          <div class="success-icon">🎉</div>
+          <h3>Hurra! Anmälan skickad!</h3>
+          <p>Vi ses idag kl. 14:00! Ta med ditt bästa banan-humör!</p>
+          <div class="rsvp-summary" id="rsvpSummary"></div>
+          <button type="button" class="reset-btn" id="resetBtn">Ändra anmälan</button>
+        </div>
+      </div>
+
+      <!-- Location / Map -->
+      <div class="location-section">
+        <h2 class="section-title">Hitta Hit</h2>
+        <div class="map-card">
+          <div class="mock-map">
+            <div class="map-grid"></div>
+            <div class="map-route"></div>
+            <div class="map-pin">
+              <div class="pin-pulse"></div>
+              <div class="pin-icon">📍</div>
+            </div>
+            <div class="map-label">Kvarnbogatan 36</div>
+          </div>
+          <div class="location-details">
+            <p><strong>Adress:</strong> Kvarnbogatan 36, Uppsala (Kungsgärdet)</p>
+            <p class="small-text">Parkering finns på gatan. Cykelbana löper precis förbi huset!</p>
+            <a href="https://maps.google.com/?q=Kvarnbogatan+36,+Uppsala" target="_blank" rel="noopener noreferrer" class="map-link">
+              Öppna i Google Maps ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Minion Denim Bottom (Footer style overalls) -->
+    <footer class="minion-footer-denim">
+      <div class="overalls-pocket">
+        <div class="pocket-logo">G</div>
+      </div>
+      <div class="overalls-strap strap-left">
+        <div class="button"></div>
+      </div>
+      <div class="overalls-strap strap-right">
+        <div class="button"></div>
+      </div>
+      <p class="footer-tagline">Bello! BANANA! 🍌</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
