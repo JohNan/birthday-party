@@ -294,6 +294,18 @@ body {
   background-color: #dbeafe; /* Soft Blue */
 }
 
+.water-card {
+  grid-column: span 2;
+  background-color: #bae6fd !important; /* Soft cyan water color */
+}
+
+@media (max-width: 480px) {
+  .water-card {
+    grid-column: span 1;
+  }
+}
+
+
 .icon-wrapper {
   background-color: #ffffff;
   border: 2px solid var(--text-dark);
