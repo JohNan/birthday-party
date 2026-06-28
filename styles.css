@@ -1,19 +1,19 @@
-/* CSS Design System for Minions Party Website */
+/* CSS Design System for Cat Party Website */
 
 :root {
-  --primary-yellow: #fde047; /* Bright Banana Yellow */
-  --primary-yellow-hover: #facc15;
-  --denim-blue: #2563eb; /* Royal Denim Blue */
-  --denim-blue-dark: #1d4ed8;
-  --minion-goggle-silver: #cbd5e1; /* Metallic gray for goggles */
-  --text-dark: #1e293b;
-  --text-light: #64748b;
-  --bg-color: #f1f5f9;
+  --primary-pink: #f43f5e; /* Warm Pink/Rose */
+  --primary-pink-hover: #e11d48;
+  --secondary-peach: #ffedd5; /* Warm Peach */
+  --cozy-cream: #fff7ed; /* Soft Cream */
+  --accent-rose: #fda4af; /* Soft pastel pink */
+  --text-dark: #27272a; /* Zinc Dark Grey */
+  --text-light: #71717a;
+  --bg-color: #fff1f2; /* Soft rose background */
   --card-bg: #ffffff;
   --border-radius-lg: 24px;
   --border-radius-md: 16px;
-  --box-shadow-premium: 0 10px 30px -10px rgba(37, 99, 235, 0.15), 0 20px 40px -15px rgba(0, 0, 0, 0.1);
-  --box-shadow-hover: 0 20px 40px -15px rgba(37, 99, 235, 0.25), 0 30px 50px -20px rgba(0, 0, 0, 0.15);
+  --box-shadow-premium: 0 10px 30px -10px rgba(244, 63, 94, 0.15), 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+  --box-shadow-hover: 0 20px 40px -15px rgba(244, 63, 94, 0.25), 0 30px 50px -20px rgba(0, 0, 0, 0.12);
 }
 
 /* Global Reset & Background */
@@ -25,7 +25,7 @@
 
 body {
   font-family: 'Fredoka', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+  background: linear-gradient(135deg, #ffe4e6 0%, #fecdd3 50%, #fca5a5 100%);
   min-height: 100vh;
   color: var(--text-dark);
   display: flex;
@@ -36,8 +36,8 @@ body {
   position: relative;
 }
 
-/* Banana Rain Animation */
-.banana-rain {
+/* Cat Rain Animation */
+.cat-rain {
   position: fixed;
   top: 0;
   left: 0;
@@ -48,12 +48,12 @@ body {
   overflow: hidden;
 }
 
-.banana-emoji {
+.cat-emoji {
   position: absolute;
   font-size: 24px;
   user-select: none;
   animation: fall linear infinite;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 @keyframes fall {
@@ -84,96 +84,83 @@ body {
   box-shadow: var(--box-shadow-hover);
 }
 
-/* Minion Header (Banana Yellow Head) */
-.minion-header {
-  background-color: var(--primary-yellow);
+/* Cat Header Face */
+.cat-header {
+  background: linear-gradient(135deg, #fecdd3 0%, #fda4af 100%);
   height: 180px;
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: visible;
   border-bottom: 8px solid var(--text-dark);
 }
 
-/* Hair strands */
-.hair-strand {
+/* Ears */
+.cat-ear {
   position: absolute;
-  background-color: var(--text-dark);
-  width: 4px;
-  height: 35px;
-  border-radius: 2px;
-  bottom: 100%;
-}
-.hair-1 {
-  left: 48%;
-  transform: rotate(-15deg);
-  height: 40px;
-}
-.hair-2 {
-  left: 50%;
-  transform: rotate(0deg);
-  height: 45px;
-}
-.hair-3 {
-  left: 52%;
-  transform: rotate(15deg);
-  height: 38px;
-}
-
-/* Goggle strap */
-.minion-goggle-strap {
-  position: absolute;
-  width: 100%;
-  height: 40px;
-  background-color: var(--text-dark);
+  width: 55px;
+  height: 55px;
+  background-color: #fda4af;
+  border: 6px solid var(--text-dark);
   z-index: 1;
+  bottom: 85%;
 }
 
-/* Goggle Frame */
-.minion-goggle {
-  width: 110px;
-  height: 110px;
-  border: 12px solid var(--minion-goggle-silver);
-  background-color: #f8fafc;
-  border-radius: 50%;
-  z-index: 2;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), inset 0 2px 5px rgba(0,0,0,0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+.cat-ear.ear-left {
+  left: 15%;
+  transform: rotate(-15deg) skewX(-10deg);
+  border-radius: 12px 40px 0 0;
 }
 
-.minion-goggle::before {
+.cat-ear.ear-right {
+  right: 15%;
+  transform: rotate(15deg) skewX(10deg);
+  border-radius: 40px 12px 0 0;
+}
+
+.cat-ear::after {
   content: '';
   position: absolute;
-  top: -16px;
-  bottom: -16px;
-  left: -16px;
-  right: -16px;
-  border: 4px solid var(--text-dark);
-  border-radius: 50%;
-  pointer-events: none;
+  width: 25px;
+  height: 25px;
+  background-color: var(--primary-pink);
+  border-radius: inherit;
+  top: 8px;
+  left: 8px;
 }
 
-/* Eye and Pupil */
-.minion-eye {
-  width: 65px;
-  height: 65px;
-  background-color: #ffffff;
-  border-radius: 50%;
+/* Eyes */
+.cat-eyes-container {
+  display: flex;
+  gap: 60px;
+  z-index: 3;
+  margin-top: 15px;
+}
+
+.cat-eye-wrapper {
   position: relative;
+}
+
+.cat-eye {
+  width: 55px;
+  height: 55px;
+  background-color: #ffffff;
+  border: 6px solid var(--text-dark);
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.15);
 }
 
-.minion-pupil {
-  width: 26px;
-  height: 26px;
-  background-color: #78350f; /* Brown iris */
+.cat-pupil {
+  width: 14px;
+  height: 32px; /* Slit slit pupil */
+  background-color: var(--text-dark);
   border-radius: 50%;
   position: absolute;
   display: flex;
@@ -182,27 +169,74 @@ body {
   transition: transform 0.1s ease-out;
 }
 
-.minion-pupil::after {
+.cat-pupil::after {
   content: '';
-  width: 14px;
-  height: 14px;
-  background-color: var(--text-dark); /* Black pupil */
-  border-radius: 50%;
-  display: block;
-  position: relative;
-}
-
-.minion-pupil::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  background-color: #ffffff; /* Eye reflection highlight */
+  width: 4px;
+  height: 4px;
+  background-color: #ffffff;
   border-radius: 50%;
   position: absolute;
-  top: 3px;
+  top: 6px;
   left: 3px;
+}
+
+/* Nose */
+.cat-nose {
+  width: 18px;
+  height: 12px;
+  background-color: var(--primary-pink);
+  border: 4px solid var(--text-dark);
+  border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+  position: absolute;
+  top: 62%;
   z-index: 3;
 }
+
+/* Mouth */
+.cat-mouth {
+  position: absolute;
+  top: 69%;
+  width: 20px;
+  height: 8px;
+  border-bottom: 4px solid var(--text-dark);
+  border-radius: 0 0 10px 10px;
+  z-index: 3;
+}
+
+/* Whiskers */
+.cat-whiskers {
+  position: absolute;
+  top: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2;
+}
+
+.cat-whiskers.whiskers-left {
+  right: 66%;
+  align-items: flex-end;
+}
+
+.cat-whiskers.whiskers-right {
+  left: 66%;
+  align-items: flex-start;
+}
+
+.cat-whiskers span {
+  width: 45px;
+  height: 4px;
+  background-color: var(--text-dark);
+  border-radius: 2px;
+}
+
+.cat-whiskers.whiskers-left span:nth-child(1) { transform: rotate(8deg); }
+.cat-whiskers.whiskers-left span:nth-child(2) { transform: rotate(0deg); }
+.cat-whiskers.whiskers-left span:nth-child(3) { transform: rotate(-8deg); }
+
+.cat-whiskers.whiskers-right span:nth-child(1) { transform: rotate(-8deg); }
+.cat-whiskers.whiskers-right span:nth-child(2) { transform: rotate(0deg); }
+.cat-whiskers.whiskers-right span:nth-child(3) { transform: rotate(8deg); }
 
 /* Card Content Styling */
 .card-body {
@@ -211,8 +245,8 @@ body {
 
 .party-badge {
   display: inline-block;
-  background-color: var(--primary-yellow);
-  color: var(--text-dark);
+  background-color: var(--primary-pink);
+  color: #ffffff;
   font-weight: 700;
   padding: 8px 16px;
   border-radius: 50px;
@@ -225,7 +259,7 @@ body {
 }
 
 .main-title {
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 800;
   color: var(--text-dark);
   line-height: 1.2;
@@ -252,7 +286,7 @@ body {
   content: '';
   flex-grow: 1;
   height: 4px;
-  background-color: var(--primary-yellow);
+  background-color: var(--accent-rose);
   border-radius: 2px;
 }
 
@@ -271,7 +305,6 @@ body {
 }
 
 .detail-card {
-  background-color: #faf5ff;
   border: 3px solid var(--text-dark);
   border-radius: var(--border-radius-md);
   padding: 20px;
@@ -288,15 +321,15 @@ body {
 }
 
 .detail-card:nth-child(1) {
-  background-color: #fef08a; /* Soft Yellow */
+  background-color: #fff1f2; /* Soft Pink */
 }
 .detail-card:nth-child(2) {
-  background-color: #dbeafe; /* Soft Blue */
+  background-color: #fff7ed; /* Soft Cream */
 }
 
 .water-card {
   grid-column: span 2;
-  background-color: #bae6fd !important; /* Soft cyan water color */
+  background-color: #ffe4e6 !important; /* Pastel pink card */
 }
 
 @media (max-width: 480px) {
@@ -304,7 +337,6 @@ body {
     grid-column: span 1;
   }
 }
-
 
 .icon-wrapper {
   background-color: #ffffff;
@@ -353,9 +385,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   background-color: var(--text-dark);
-  padding: 20px;
+  padding: 20px 10px;
   border-radius: var(--border-radius-md);
   color: #ffffff;
   box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
@@ -365,29 +397,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 70px;
+  min-width: 60px;
 }
 
 .time-block .number {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 800;
-  color: var(--primary-yellow);
+  color: var(--accent-rose);
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
   font-variant-numeric: tabular-nums;
 }
 
 .time-block .label {
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
-  color: #94a3b8;
+  color: #a1a1aa;
   letter-spacing: 0.5px;
   margin-top: 2px;
 }
 
 .time-separator {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 800;
-  color: #64748b;
+  color: #52525b;
   animation: blink 1s infinite;
 }
 
@@ -398,7 +430,7 @@ body {
 
 /* Weather Section */
 .weather-card {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
   border: 3px solid var(--text-dark);
   border-radius: var(--border-radius-md);
   padding: 24px;
@@ -433,7 +465,7 @@ body {
 
 .temp-num {
   font-size: 38px;
-  color: var(--primary-yellow);
+  color: #ffffff;
 }
 
 .temp-unit {
@@ -454,10 +486,10 @@ body {
 .sun-ray-core {
   width: 32px;
   height: 32px;
-  background-color: var(--primary-yellow);
+  background-color: #ffffff;
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 0 0 15px #fde047;
+  box-shadow: 0 0 15px rgba(255,255,255,0.6);
 }
 
 .sun-rays {
@@ -472,7 +504,7 @@ body {
   position: absolute;
   width: 4px;
   height: 12px;
-  background-color: var(--primary-yellow);
+  background-color: #ffffff;
   border-radius: 2px;
   left: 28px;
   transform-origin: 2px 30px;
@@ -511,7 +543,7 @@ body {
 
 .stat {
   font-size: 14px;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 6px 12px;
   border-radius: 30px;
   display: flex;
@@ -526,7 +558,7 @@ body {
 
 /* RSVP Form Section */
 .rsvp-section {
-  background-color: #f8fafc;
+  background-color: #fff7ed;
   border: 3px solid var(--text-dark);
   border-radius: var(--border-radius-md);
   padding: 25px;
@@ -563,7 +595,7 @@ body {
 .input-group textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid #cbd5e1;
+  border: 2px solid #e4e4e7;
   border-radius: 12px;
   font-family: inherit;
   font-size: 15px;
@@ -576,12 +608,12 @@ body {
 .input-group input:focus, 
 .input-group select:focus, 
 .input-group textarea:focus {
-  border-color: var(--denim-blue);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  border-color: var(--primary-pink);
+  box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.15);
 }
 
 .submit-btn {
-  background-color: var(--primary-yellow);
+  background-color: var(--accent-rose);
   color: var(--text-dark);
   font-family: inherit;
   font-size: 16px;
@@ -598,7 +630,7 @@ body {
 }
 
 .submit-btn:hover {
-  background-color: var(--primary-yellow-hover);
+  background-color: #fca5a5;
   transform: translate(-1px, -1px);
   box-shadow: 4px 4px 0 var(--text-dark);
 }
@@ -634,7 +666,7 @@ body {
 .success-message h3 {
   font-size: 22px;
   font-weight: 700;
-  color: #16a34a;
+  color: var(--primary-pink);
   margin-bottom: 8px;
 }
 
@@ -644,8 +676,8 @@ body {
 }
 
 .rsvp-summary {
-  background-color: #f1f5f9;
-  border: 2px dashed #cbd5e1;
+  background-color: #f4f4f5;
+  border: 2px dashed #d4d4d8;
   padding: 15px;
   border-radius: 12px;
   margin-bottom: 20px;
@@ -657,7 +689,7 @@ body {
 .reset-btn {
   background: none;
   border: none;
-  color: var(--denim-blue);
+  color: var(--primary-pink);
   font-family: inherit;
   font-weight: 600;
   font-size: 14px;
@@ -666,7 +698,7 @@ body {
 }
 
 .reset-btn:hover {
-  color: var(--denim-blue-dark);
+  color: var(--primary-pink-hover);
 }
 
 /* Location Map Widget */
@@ -681,7 +713,7 @@ body {
 
 .mock-map {
   height: 160px;
-  background-color: #e0f2fe;
+  background-color: #ffe4e6;
   position: relative;
   overflow: hidden;
 }
@@ -691,8 +723,8 @@ body {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(244, 63, 94, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(244, 63, 94, 0.08) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -700,7 +732,7 @@ body {
   position: absolute;
   width: 180px;
   height: 6px;
-  background-color: var(--denim-blue);
+  background-color: var(--primary-pink);
   border-radius: 3px;
   top: 50%;
   left: 20%;
@@ -712,7 +744,7 @@ body {
   position: absolute;
   width: 120px;
   height: 6px;
-  background-color: var(--denim-blue);
+  background-color: var(--primary-pink);
   border-radius: 3px;
   top: -40px;
   left: 150px;
@@ -737,7 +769,7 @@ body {
   position: absolute;
   width: 16px;
   height: 6px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.15);
   border-radius: 50%;
   bottom: -4px;
   left: 8px;
@@ -789,7 +821,7 @@ body {
 
 .map-link {
   display: inline-block;
-  background-color: var(--denim-blue);
+  background-color: var(--primary-pink);
   color: #ffffff;
   text-decoration: none;
   font-weight: 700;
@@ -802,7 +834,7 @@ body {
 }
 
 .map-link:hover {
-  background-color: var(--denim-blue-dark);
+  background-color: var(--primary-pink-hover);
   transform: translate(-1px, -1px);
   box-shadow: 3px 3px 0 var(--text-dark);
 }
@@ -812,16 +844,16 @@ body {
   box-shadow: 1px 1px 0 var(--text-dark);
 }
 
-/* Minion Denim Bottom Footer */
-.minion-footer-denim {
-  background-color: #3b82f6; /* Denim light blue background base */
+/* Cat Tail Footer Cozy Yarn */
+.cat-footer-yarn {
+  background-color: #fecdd3;
   background-image: repeating-linear-gradient(
     45deg,
-    #2563eb,
-    #2563eb 4px,
-    #1d4ed8 4px,
-    #1d4ed8 8px
-  ); /* Denim fabric texture using lines */
+    #fda4af,
+    #fda4af 6px,
+    #fecdd3 6px,
+    #fecdd3 12px
+  ); /* Cozy striped yarn design */
   height: 130px;
   border-top: 8px solid var(--text-dark);
   position: relative;
@@ -833,74 +865,43 @@ body {
   z-index: 5;
 }
 
-.overalls-pocket {
+.cat-tail {
   position: absolute;
-  top: -4px;
-  width: 70px;
-  height: 60px;
-  background-color: #2563eb;
-  border: 4px solid var(--text-dark);
-  border-radius: 0 0 20px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pocket-logo {
-  width: 32px;
-  height: 32px;
-  background-color: var(--text-dark);
-  color: var(--primary-yellow);
-  border-radius: 50%;
-  font-size: 16px;
-  font-weight: 800;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid var(--primary-yellow);
-  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
-}
-
-.overalls-strap {
-  position: absolute;
-  top: -30px;
   width: 20px;
-  height: 60px;
-  background-color: #1d4ed8;
-  border: 4px solid var(--text-dark);
+  height: 70px;
+  background-color: #fda4af;
+  border: 5px solid var(--text-dark);
+  border-radius: 10px 10px 0 0;
+  bottom: 80px;
+  right: 50px;
+  transform-origin: bottom center;
+  animation: wiggleTail 3.5s ease-in-out infinite;
   z-index: 4;
 }
 
-.overalls-strap.strap-left {
-  left: 20px;
-  transform: rotate(35deg);
-  border-radius: 8px 0 0 8px;
-}
-
-.overalls-strap.strap-right {
-  right: 20px;
-  transform: rotate(-35deg);
-  border-radius: 0 8px 8px 0;
-}
-
-.overalls-strap .button {
-  width: 12px;
-  height: 12px;
-  background-color: #78350f; /* Brownish button */
-  border: 2px solid var(--text-dark);
-  border-radius: 50%;
+.cat-tail::after {
+  content: '';
   position: absolute;
-  bottom: 4px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-pink);
+  border-radius: 50%;
+  top: 5px;
   left: 0;
   right: 0;
   margin: auto;
 }
 
+@keyframes wiggleTail {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+}
+
 .footer-tagline {
   font-size: 16px;
   font-weight: 800;
-  color: var(--primary-yellow);
-  text-shadow: 2px 2px 0 var(--text-dark);
+  color: var(--text-dark);
+  text-shadow: 1px 1px 0 #ffffff;
   z-index: 6;
   letter-spacing: 0.5px;
 }
