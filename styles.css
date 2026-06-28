@@ -327,13 +327,13 @@ body {
   background-color: #fff7ed; /* Soft Cream */
 }
 
-.water-card {
+.activity-card {
   grid-column: span 2;
   background-color: #ffe4e6 !important; /* Pastel pink card */
 }
 
 @media (max-width: 480px) {
-  .water-card {
+  .activity-card {
     grid-column: span 1;
   }
 }
