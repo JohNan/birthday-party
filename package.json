@@ -1,0 +1,13 @@
+{
+  "name": "minion-birthday-invitation",
+  "version": "1.0.0",
+  "description": "En modern och interaktiv inbjudningssida för Minion-kalas.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 8080"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
