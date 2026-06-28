@@ -45,8 +45,8 @@ function initCountdown() {
 
   if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
-  const target = new Date(2026, 7, 23, 14, 0, 0); // August = month 7
-  const end    = new Date(2026, 7, 23, 16, 0, 0);
+  const target = new Date(2026, 7, 16, 14, 0, 0); // August = month 7
+  const end    = new Date(2026, 7, 16, 16, 0, 0);
 
   function tick() {
     const now       = new Date();
@@ -67,7 +67,7 @@ function initCountdown() {
     } else if (tillEnd > 0) {
       if (heading) heading.textContent = 'Kalaset pågår just nu!';
       if (timerEl) timerEl.innerHTML = `
-        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#c9748a;text-align:center;padding:20px 0;">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8547a;text-align:center;padding:20px 0;">
           Välkommen in — festen är igång fram till kl 16:00 🐾
         </p>`;
       clearInterval(interval);
