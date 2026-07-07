@@ -267,7 +267,7 @@ body {
 /* ── Details Section ──────────────────────────────────────── */
 .details-section {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
   padding: 16px 0 48px;
   border-top: 1px solid var(--surface-dark);
