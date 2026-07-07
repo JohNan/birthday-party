@@ -95,7 +95,7 @@ function initCountdown() {
  *  3. Click Deploy → New deployment → Web app → Execute as: Me, Who has access: Anyone.
  *  4. Copy the deployment URL and paste it below as APPS_SCRIPT_URL.
  */
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCoT5dd86Xr72pHVXx7IKBpbrJYr528Hl2oFG8Jx4mIUf1M97V0tH3NSaeBYlq4hOQLA/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZ29DYASooO_mD4zc3qN74ytUgHtsvFQ471pj0TbC5udJPm-GY0pWs2_p07cAgIPtc7Q/exec';
 
 function initRSVP() {
   const form      = document.getElementById('rsvpForm');
