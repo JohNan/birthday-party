@@ -12,6 +12,7 @@ const PARTY_CONFIG = {
   dateStringSwedish: '16 Augusti 2026',
   dateWithDaySwedish: 'Söndag, 16 Augusti 2026',
   timeSwedish: '14:00 — 16:00',
+  rsvpDeadlineSwedish: '31 Juli (men gärna så snart som möjligt)',
   descriptionSwedish: 'Du är hjärtligt välkommen till Alices katt-inspirerade 10-årsfest den 16 augusti kl 14:00 på Kvarnbogatan 36 i Uppsala.'
 };
 
@@ -43,6 +44,11 @@ function initCentralizedDate() {
   const detailsTime = document.getElementById('detailsTime');
   if (detailsTime) {
     detailsTime.textContent = `Kl. ${PARTY_CONFIG.timeSwedish}`;
+  }
+  
+  const rsvpDeadline = document.getElementById('rsvpDeadline');
+  if (rsvpDeadline) {
+    rsvpDeadline.textContent = PARTY_CONFIG.rsvpDeadlineSwedish;
   }
   
   const successDate = document.getElementById('successDate');
