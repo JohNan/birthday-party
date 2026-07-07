@@ -87,43 +87,97 @@ function initCountdown() {
 }
 
 /**
- * 3. RSVP — localStorage persistence
+ * 3. RSVP — sends data to Google Sheets via Apps Script, localStorage for UX
+ *
+ * SETUP (one-time, ~3 min):
+ *  1. Go to https://sheets.new  → create a spreadsheet, note its ID from the URL.
+ *  2. In the spreadsheet: Extensions → Apps Script → paste the script from SHEETS_SCRIPT.md.
+ *  3. Click Deploy → New deployment → Web app → Execute as: Me, Who has access: Anyone.
+ *  4. Copy the deployment URL and paste it below as APPS_SCRIPT_URL.
  */
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCoT5dd86Xr72pHVXx7IKBpbrJYr528Hl2oFG8Jx4mIUf1M97V0tH3NSaeBYlq4hOQLA/exec';
+
 function initRSVP() {
-  const form    = document.getElementById('rsvpForm');
-  const success = document.getElementById('successMessage');
-  const summary = document.getElementById('rsvpSummary');
-  const reset   = document.getElementById('resetBtn');
+  const form      = document.getElementById('rsvpForm');
+  const success   = document.getElementById('successMessage');
+  const summary   = document.getElementById('rsvpSummary');
+  const reset     = document.getElementById('resetBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  const errorBox  = document.getElementById('rsvpError');
 
   if (!form || !success || !summary || !reset) return;
 
   const KEY = 'alice_cat_party_2026';
 
+  // Show confirmation if already submitted in this browser
   const saved = localStorage.getItem(KEY);
   if (saved) {
     try { showSuccess(JSON.parse(saved)); }
     catch { localStorage.removeItem(KEY); }
   }
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = {
-      name:  document.getElementById('guestName').value.trim(),
-      count: document.getElementById('guestCount').value,
-      notes: document.getElementById('guestNotes').value.trim()
-        || 'Inga specifika önskemål.'
+      name:      document.getElementById('guestName').value.trim(),
+      count:     document.getElementById('guestCount').value,
+      notes:     document.getElementById('guestNotes').value.trim() || 'Inga specifika önskemål.',
+      timestamp: new Date().toISOString()
     };
     if (!data.name) return;
-    localStorage.setItem(KEY, JSON.stringify(data));
-    showSuccess(data);
+
+    // Loading state
+    setLoading(true);
+    if (errorBox) errorBox.style.display = 'none';
+
+    const configured = APPS_SCRIPT_URL && APPS_SCRIPT_URL !== 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+
+    if (configured) {
+      try {
+        // Apps Script requires no-cors for the initial fetch
+        await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(data)
+        });
+        // no-cors gives opaque response, so we assume success if no throw
+        localStorage.setItem(KEY, JSON.stringify(data));
+        showSuccess(data);
+      } catch (err) {
+        console.error('RSVP submission failed:', err);
+        showError();
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      // URL not yet configured — save locally and show success anyway
+      console.warn('Apps Script URL not configured. Saving to localStorage only.');
+      localStorage.setItem(KEY, JSON.stringify(data));
+      setLoading(false);
+      showSuccess(data);
+    }
   });
 
   reset.addEventListener('click', () => {
     localStorage.removeItem(KEY);
     success.style.display = 'none';
     form.style.display    = 'flex';
+    if (errorBox) errorBox.style.display = 'none';
     form.reset();
   });
+
+  function setLoading(on) {
+    if (!submitBtn) return;
+    submitBtn.disabled = on;
+    submitBtn.textContent = on ? 'Skickar…' : 'Skicka anmälan';
+    submitBtn.style.opacity = on ? '0.7' : '1';
+  }
+
+  function showError() {
+    if (!errorBox) return;
+    errorBox.style.display = 'block';
+  }
 
   function showSuccess(data) {
     form.style.display    = 'none';
