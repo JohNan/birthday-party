@@ -1,8 +1,60 @@
+/**
+ * Centralized Party Date Configuration
+ * Note: month is 0-indexed (7 = August)
+ */
+const PARTY_CONFIG = {
+  year: 2026,
+  month: 7, // August
+  day: 16,
+  hour: 14,
+  minute: 0,
+  durationHours: 2,
+  dateStringSwedish: '16 Augusti 2026',
+  dateWithDaySwedish: 'Söndag, 16 Augusti 2026',
+  timeSwedish: '14:00 — 16:00',
+  descriptionSwedish: 'Du är hjärtligt välkommen till Alices katt-inspirerade 10-årsfest den 16 augusti kl 14:00 på Kvarnbogatan 36 i Uppsala.'
+};
+
 document.addEventListener('DOMContentLoaded', () => {
+  initCentralizedDate();
   initPetals();
   initCountdown();
   initRSVP();
 });
+
+function initCentralizedDate() {
+  document.title = `Alices 10-Års Fest — ${PARTY_CONFIG.dateStringSwedish}`;
+  
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) {
+    metaDesc.setAttribute('content', PARTY_CONFIG.descriptionSwedish);
+  }
+  
+  const heroSubtitle = document.getElementById('heroSubtitle');
+  if (heroSubtitle) {
+    heroSubtitle.textContent = `10 år — ${PARTY_CONFIG.dateStringSwedish}`;
+  }
+  
+  const detailsDate = document.getElementById('detailsDate');
+  if (detailsDate) {
+    detailsDate.textContent = PARTY_CONFIG.dateWithDaySwedish;
+  }
+  
+  const detailsTime = document.getElementById('detailsTime');
+  if (detailsTime) {
+    detailsTime.textContent = `Kl. ${PARTY_CONFIG.timeSwedish}`;
+  }
+  
+  const successDate = document.getElementById('successDate');
+  if (successDate) {
+    successDate.textContent = `Vi ses söndagen den ${PARTY_CONFIG.day} Augusti kl. ${PARTY_CONFIG.hour}:00!`;
+  }
+  
+  const footerDate = document.getElementById('footerDate');
+  if (footerDate) {
+    footerDate.textContent = `${PARTY_CONFIG.dateStringSwedish} · Kl. ${PARTY_CONFIG.hour}:00–${PARTY_CONFIG.hour + PARTY_CONFIG.durationHours}:00`;
+  }
+}
 
 /**
  * 1. Subtle floating petal / confetti effect
@@ -33,7 +85,7 @@ function initPetals() {
 }
 
 /**
- * 2. Countdown — targeting 2026-08-23 at 14:00
+ * 2. Countdown — targeting 2026-08-16 at 14:00
  */
 function initCountdown() {
   const daysEl      = document.getElementById('days');
@@ -45,8 +97,8 @@ function initCountdown() {
 
   if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
 
-  const target = new Date(2026, 7, 16, 14, 0, 0); // August = month 7
-  const end    = new Date(2026, 7, 16, 16, 0, 0);
+  const target = new Date(PARTY_CONFIG.year, PARTY_CONFIG.month, PARTY_CONFIG.day, PARTY_CONFIG.hour, PARTY_CONFIG.minute, 0);
+  const end    = new Date(PARTY_CONFIG.year, PARTY_CONFIG.month, PARTY_CONFIG.day, PARTY_CONFIG.hour + PARTY_CONFIG.durationHours, PARTY_CONFIG.minute, 0);
 
   function tick() {
     const now       = new Date();
