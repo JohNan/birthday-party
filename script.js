@@ -180,7 +180,7 @@ function initRSVP() {
       name:      document.getElementById('guestName').value.trim(),
       count:     document.getElementById('guestCount').value,
       notes:     document.getElementById('guestNotes').value.trim() || 'Inga specifika önskemål.',
-      timestamp: new Date().toISOString()
+      timestamp: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 19).replace('T', ' ')
     };
     if (!data.name) return;
 
