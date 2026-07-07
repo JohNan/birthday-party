@@ -44,6 +44,10 @@ function doPost(e) {
     var jsonString = e.postData.contents;
     var data = JSON.parse(jsonString);
     
+    // If using a container-bound script (created via Extensions -> Apps Script inside the sheet),
+    // getActiveSpreadsheet() automatically targets the current sheet.
+    // If using a standalone script, uncomment the line below and insert your Spreadsheet ID:
+    // var sheet = SpreadsheetApp.openById("1Y9UtciOxQOTQ6Jk7fdGJOt69yydE3ZUpZJOzLHRpPCU").getActiveSheet();
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     
     // Initialize headers if sheet is empty
