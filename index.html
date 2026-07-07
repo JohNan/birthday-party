@@ -69,16 +69,7 @@
           </div>
         </div>
 
-        <div class="detail-item">
-          <div class="detail-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-          </div>
-          <div class="detail-text">
-            <h3>Aktiviteter</h3>
-            <p>Ansiktsmålning & lek</p>
-            <p class="detail-sub">Vi blir söta kattungar!</p>
-          </div>
-        </div>
+
       </section>
 
       <!-- Countdown -->
@@ -150,21 +141,11 @@
         <p class="rsvp-lead">Svara gärna senast <strong>9 Augusti</strong> — vi vill veta hur många kattungar som kommer!</p>
 
         <form class="rsvp-form" id="rsvpForm">
-          <div class="field-row two-col">
-            <div class="field-group">
-              <label for="guestName">Ditt namn</label>
-              <input type="text" id="guestName" required placeholder="T.ex. Maja Lindström">
-            </div>
-            <div class="field-group">
-              <label for="guestCount">Antal gäster</label>
-              <select id="guestCount" required>
-                <option value="1">1 person</option>
-                <option value="2">2 personer</option>
-                <option value="3">3 personer</option>
-                <option value="4">4 personer</option>
-              </select>
-            </div>
+          <div class="field-group">
+            <label for="guestName">Ditt namn</label>
+            <input type="text" id="guestName" required placeholder="T.ex. Maja Lindström">
           </div>
+          <input type="hidden" id="guestCount" value="1">
           <div class="field-group">
             <label for="guestNotes">Allergier eller övriga önskemål</label>
             <textarea id="guestNotes" rows="3" placeholder="Laktosfri, nötallergi, vegetarisk — eller ett glatt meddelande till Alice!"></textarea>
